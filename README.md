@@ -167,7 +167,7 @@ Three principles guide all creative decisions at AKOOK:
 |---|---|
 | Founder & Creative Director | Khadija Al Dhabouni |
 | Brand & Logo Design | White Studio, Rawan Essam |
-| Digital Brand Book | Milad Raeisi |
+| Digital Brand Book | SBC |
 
 <br>
 
