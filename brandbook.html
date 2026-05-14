@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKOOK Jewelries — Brand Book 2023</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:       #000000;
+      --charcoal:    #363330;
+      --forest:      #00371f;
+      --deep-forest: #001f12;
+      --white:       #ffffff;
+      --gold:        #c9a462;
+      --gold-light:  #e8d5a3;
+      --cream:       #faf6f1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ─── PROGRESS BAR ─── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--forest), var(--gold));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 28px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.5s ease;
+    }
+    nav.scrolled {
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 18px 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      text-decoration: none; color: var(--white);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo .nav-icon {
+      width: 26px; height: 26px; object-fit: contain; flex-shrink: 0;
+    }
+    .nav-logo .nav-text-logo {
+      height: 22px; object-fit: contain; display: block;
+    }
+    .closing-logo {
+      width: 64px; height: 64px;
+      display: block; margin: 0 auto 28px;
+      object-fit: contain; opacity: 0.9;
+    }
+    .footer-logo-wrap {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .footer-logo-wrap .footer-icon {
+      width: 42px; height: 42px; object-fit: contain; flex-shrink: 0;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.6rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 35% 60%, #00371f 0%, #001a0e 45%, #000000 100%);
+    }
+    .hero-lines {
+      position: absolute; inset: 0; overflow: hidden; opacity: 0.06;
+    }
+    .hero-lines::before {
+      content: ''; position: absolute; inset: -100%;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 80px, rgba(201,164,98,.4) 80px, rgba(201,164,98,.4) 81px),
+        repeating-linear-gradient(-45deg, transparent, transparent 80px, rgba(201,164,98,.2) 80px, rgba(201,164,98,.2) 81px);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; will-change: transform;
+    }
+    .hero-icon {
+      width: 80px; height: 80px; margin: 0 auto 36px;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s ease forwards 0.4s;
+      display: block; object-fit: contain;
+    }
+    .hero-text-logo {
+      display: block;
+      width: min(480px, 75vw);
+      object-fit: contain;
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.3s ease forwards 0.6s;
+      margin: 0 auto;
+    }
+    .hero-rule {
+      width: 1px; height: 56px; background: rgba(255,255,255,0.25);
+      margin: 36px auto;
+      opacity: 0; animation: fadeIn 1s ease forwards 1.3s;
+    }
+    .hero-byline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.4); letter-spacing: 0.04em;
+      opacity: 0; animation: fadeIn 1s ease forwards 1.5s;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      opacity: 0; animation: fadeIn 1s ease forwards 2s;
+    }
+    .scroll-hint span {
+      font-size: 0.52rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .scroll-wire {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
+      animation: wireAnim 2s ease-in-out infinite;
+    }
+
+    /* ─── SECTION COMMONS ─── */
+    .section-wrap { max-width: 1240px; margin: 0 auto; padding: 0 5%; }
+    .s-label {
+      font-size: 0.58rem; letter-spacing: 0.45em;
+      text-transform: uppercase; color: var(--gold);
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 28px;
+    }
+    .s-label::after { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
+    .s-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 28px;
+    }
+    .s-body {
+      font-size: 0.82rem; line-height: 1.95;
+      color: rgba(255,255,255,0.62); font-weight: 300;
+    }
+    .s-body + .s-body { margin-top: 18px; }
+
+    /* ─── INTRO ─── */
+    .intro { padding: 140px 0; background: var(--charcoal); overflow: hidden; }
+    .intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .intro-accent {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4.5rem, 10vw, 8rem);
+      font-weight: 300; color: rgba(255,255,255,0.04);
+      line-height: 1; letter-spacing: 0.1em;
+      position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+      pointer-events: none; white-space: nowrap;
+    }
+    .year-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,164,98,0.4);
+      padding: 12px 24px; margin-bottom: 32px;
+      font-size: 0.62rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .intro-statement {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 300; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+      border-left: 2px solid var(--gold);
+      padding-left: 28px; margin-top: 32px;
+      font-style: italic;
+    }
+
+    /* ─── FOUNDER ─── */
+    .founder {
+      padding: 140px 0; background: var(--forest);
+      position: relative; overflow: hidden;
+    }
+    .founder-ghost {
+      position: absolute; top: 50%; left: -2%;
+      transform: translateY(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(7rem, 18vw, 16rem);
+      font-weight: 700; letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.025);
+      white-space: nowrap; pointer-events: none; line-height: 1;
+    }
+    .founder-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+      position: relative; z-index: 1;
+    }
+    .founder-photo {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .founder-photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(201,164,98,0.1) 0%, transparent 70%);
+    }
+    .founder-photo-icon {
+      width: 120px; height: 120px;
+      opacity: 0.2; object-fit: contain;
+    }
+    .founder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400; margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .founder-role {
+      font-size: 0.62rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 36px;
+    }
+    .founder-divider {
+      width: 48px; height: 1px;
+      background: rgba(255,255,255,0.2); margin-bottom: 36px;
+    }
+
+    /* ─── VISION ─── */
+    .vision {
+      padding: 160px 0;
+      background: var(--black);
+      position: relative; overflow: hidden;
+    }
+    .vision-bg-layer {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 70% 50%, rgba(0,55,31,0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vision-inner { position: relative; z-index: 1; }
+    .vision-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; margin-top: 64px;
+    }
+    .vision-card {
+      padding: 40px 36px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      transition: all 0.4s ease;
+      position: relative; overflow: hidden;
+    }
+    .vision-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    .vision-card:hover { background: rgba(0,55,31,0.15); }
+    .vision-card:hover::before { transform: scaleX(1); }
+    .vision-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; margin-bottom: 14px; font-weight: 400;
+    }
+    .vision-card-body {
+      font-size: 0.78rem; line-height: 1.85;
+      color: rgba(255,255,255,0.5); font-weight: 300;
+    }
+
+    /* ─── MISSION ─── */
+    .mission { padding: 140px 0; background: var(--charcoal); }
+    .mission-list { margin-top: 64px; }
+    .mission-item {
+      display: flex; align-items: flex-start; gap: 32px;
+      padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: padding-left 0.4s ease;
+      cursor: default;
+    }
+    .mission-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .mission-item:hover { padding-left: 12px; }
+    .mission-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; color: rgba(255,255,255,0.08);
+      line-height: 1; flex-shrink: 0; width: 56px;
+    }
+    .mission-text-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; margin-bottom: 10px; font-weight: 400;
+    }
+    .mission-text-body {
+      font-size: 0.78rem; color: rgba(255,255,255,0.5);
+      line-height: 1.8; font-weight: 300;
+    }
+    .mission-arrow {
+      margin-left: auto; color: var(--gold);
+      font-size: 1.1rem; opacity: 0;
+      transition: opacity 0.3s; flex-shrink: 0; align-self: center;
+    }
+    .mission-item:hover .mission-arrow { opacity: 1; }
+
+    /* ─── CORE VALUES ─── */
+    .values { padding: 140px 0; background: var(--deep-forest); overflow: hidden; }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; margin-top: 64px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .val-card {
+      padding: 52px 28px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.45s ease;
+      position: relative; overflow: hidden;
+    }
+    .val-card:last-child { border-right: none; }
+    .val-card::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; height: 2px;
+      width: 0; background: var(--gold);
+      transition: width 0.45s ease;
+    }
+    .val-card:hover { background: rgba(255,255,255,0.04); transform: translateY(-4px); }
+    .val-card:hover::after { width: 100%; }
+    .val-n {
+      font-size: 0.55rem; letter-spacing: 0.35em;
+      color: var(--gold); margin-bottom: 20px;
+    }
+    .val-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 400; margin-bottom: 16px; line-height: 1.1;
+    }
+    .val-desc {
+      font-size: 0.72rem; line-height: 1.85;
+      color: rgba(255,255,255,0.45); font-weight: 300;
+    }
+
+    /* ─── DESIGN PHILOSOPHY ─── */
+    .philosophy { padding: 140px 0; background: var(--black); overflow: hidden; position: relative; }
+    .philo-bg-text {
+      position: absolute; bottom: -4%; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 20vw, 16rem);
+      font-weight: 700; color: rgba(255,255,255,0.015);
+      white-space: nowrap; pointer-events: none;
+    }
+    .philo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 56px; margin-top: 72px; position: relative; z-index: 1;
+    }
+    .philo-item { padding-left: 24px; border-left: 1px solid var(--gold); }
+    .philo-num {
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      color: var(--gold); margin-bottom: 18px;
+    }
+    .philo-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem; font-weight: 400; margin-bottom: 18px; line-height: 1.15;
+    }
+    .philo-body {
+      font-size: 0.76rem; line-height: 1.85;
+      color: rgba(255,255,255,0.48); font-weight: 300;
+    }
+    .philo-quote {
+      margin-top: 80px; padding-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      text-align: center; position: relative; z-index: 1;
+    }
+    .philo-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-weight: 300; font-style: italic;
+      color: rgba(255,255,255,0.55);
+      max-width: 780px; margin: 0 auto; line-height: 1.6;
+    }
+
+    /* ─── COLOR PALETTE ─── */
+    .palette { padding: 140px 0; background: var(--charcoal); }
+    .palette-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; margin-top: 64px;
+    }
+    .swatch {
+      aspect-ratio: 4/5; position: relative;
+      overflow: hidden; transition: transform 0.4s ease, box-shadow 0.4s ease;
+      outline: 1.5px solid rgba(255,255,255,0.18);
+      outline-offset: 0;
+    }
+    .swatch:hover { transform: translateY(-8px); }
+
+    /* ── همه swatchها یک border نازک سفید دارند ── */
+    .sw-black  .swatch-inner { background: #000000; }
+    .sw-charcoal .swatch-inner { background: #363330; }
+    .sw-forest .swatch-inner { background: #00371f; }
+    .swatch-inner { position: absolute; inset: 0; }
+
+    /* ── رنگ وسط هم رنگ با پس‌زمینه section است — border طلایی + glow ── */
+    .sw-charcoal {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      box-shadow: 0 0 0 6px rgba(201,164,98,0.08), 0 16px 48px rgba(0,0,0,0.6);
+    }
+    .sw-charcoal:hover {
+      box-shadow: 0 0 0 6px rgba(201,164,98,0.14), 0 24px 56px rgba(0,0,0,0.7);
+    }
+
+    /* ── badge "section color" روی charcoal ── */
+    .swatch-tag {
+      position: absolute; top: 20px; right: 20px; z-index: 2;
+      font-size: 0.48rem; letter-spacing: 0.3em;
+      text-transform: uppercase;
+      background: var(--gold); color: #000;
+      padding: 5px 10px; font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .swatch-info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 28px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.2) 70%, transparent 100%);
+    }
+    .swatch-hex {
+      font-size: 0.72rem; letter-spacing: 0.22em;
+      font-weight: 500; margin-bottom: 6px;
+    }
+    .swatch-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-style: italic; margin-bottom: 8px;
+    }
+    .swatch-vals {
+      font-size: 0.58rem; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.5); line-height: 1.8;
+    }
+
+    /* ─── TYPOGRAPHY ─── */
+    .typography { padding: 140px 0; background: var(--forest); }
+    .type-specimen {
+      margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .type-block { padding: 56px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .type-meta {
+      display: flex; gap: 40px; margin-bottom: 32px;
+    }
+    .type-meta-item { display: flex; flex-direction: column; gap: 6px; }
+    .type-meta-label {
+      font-size: 0.55rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .type-meta-value {
+      font-size: 0.72rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em; font-weight: 300;
+    }
+    .type-display-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300; line-height: 0.9;
+      letter-spacing: 0.05em; margin-bottom: 20px;
+    }
+    .type-alphabet {
+      font-size: 0.8rem; letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.45); line-height: 2.2; font-weight: 300;
+    }
+    .type-display-ar {
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      font-weight: 300; line-height: 1.3; direction: rtl;
+      letter-spacing: 0.05em; margin-bottom: 16px;
+      font-family: serif;
+    }
+
+    /* ─── LOGO GUIDELINES ─── */
+    .logo-guide { padding: 140px 0; background: var(--black); }
+    .logo-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4px; margin-top: 64px;
+    }
+    .logo-cell {
+      padding: 72px 48px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+      min-height: 260px;
+    }
+    .logo-on-black  { background: #000000; }
+    .logo-on-green  { background: #00371f; }
+    .logo-on-dark   { background: #363330; }
+    .logo-on-cream  { background: var(--cream); }
+    .logo-cell-label {
+      font-size: 0.55rem; letter-spacing: 0.3em;
+      text-transform: uppercase; margin-top: 8px;
+    }
+    .logo-on-cream .logo-cell-label { color: rgba(0,0,0,0.35); }
+    .logo-icon-cell {
+      width: 56px; height: 56px;
+      object-fit: contain; display: block;
+    }
+    .logo-text-lockup {
+      width: 140px; object-fit: contain;
+      display: block;
+    }
+    .logo-on-cream .logo-text-lockup { filter: invert(1); }
+
+    /* Donts */
+    .donts { margin-top: 80px; }
+    .donts-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; margin-bottom: 36px; font-weight: 400;
+    }
+    .donts-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .dont-card {
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.06); border-radius: 1px;
+      transition: border-color 0.3s;
+    }
+    .dont-card:hover { border-color: rgba(192,57,43,0.4); }
+    .dont-flag {
+      font-size: 0.55rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: #c0392b; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .dont-flag::before {
+      content: '✕'; font-size: 0.6rem;
+    }
+    .dont-text {
+      font-size: 0.76rem; line-height: 1.75;
+      color: rgba(255,255,255,0.5); font-weight: 300;
+    }
+
+    /* ─── BRAND EXPERIENCE ─── */
+    .experience { padding: 140px 0; background: var(--forest); position: relative; overflow: hidden; }
+    .exp-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; margin-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .exp-item {
+      padding: 44px 48px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: flex-start; gap: 28px;
+      transition: background 0.35s ease;
+    }
+    .exp-item:hover { background: rgba(255,255,255,0.04); }
+    .exp-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem; color: rgba(255,255,255,0.08);
+      line-height: 1; flex-shrink: 0;
+    }
+    .exp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; margin-bottom: 10px; font-weight: 400;
+    }
+    .exp-desc {
+      font-size: 0.74rem; color: rgba(255,255,255,0.48);
+      line-height: 1.75; font-weight: 300;
+    }
+
+    /* ─── FUTURE ─── */
+    .future { padding: 140px 0; background: var(--charcoal); overflow: hidden; }
+    .future-list { margin-top: 64px; }
+    .fut-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: padding-left 0.4s ease, color 0.3s ease;
+      cursor: default;
+    }
+    .fut-item:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+    .fut-item:hover { padding-left: 18px; color: var(--gold); }
+    .fut-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem); font-weight: 400;
+    }
+    .fut-arrow {
+      color: var(--gold); opacity: 0;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .fut-item:hover .fut-arrow { opacity: 1; transform: translateX(6px); }
+
+    /* ─── CLOSING ─── */
+    .closing {
+      padding: 200px 5%; background: var(--forest);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .closing-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,55,31,1) 0%, var(--deep-forest) 100%);
+      pointer-events: none;
+    }
+    .closing-ghost {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(10rem, 28vw, 22rem);
+      font-weight: 700; color: rgba(255,255,255,0.02);
+      white-space: nowrap; pointer-events: none;
+      letter-spacing: 0.12em;
+    }
+    .closing-inner { position: relative; z-index: 1; }
+    .closing-rule { width: 56px; height: 1px; background: var(--gold); margin: 0 auto 48px; }
+    .closing-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 300; font-style: italic;
+      line-height: 1.65; max-width: 720px; margin: 0 auto 56px;
+      color: rgba(255,255,255,0.8);
+    }
+    .closing-text-logo {
+      display: block;
+      width: min(380px, 72vw);
+      object-fit: contain;
+      margin: 0 auto;
+      opacity: 0.95;
+    }
+    .closing-year {
+      font-size: 0.55rem; letter-spacing: 0.35em;
+      color: var(--gold); margin-top: 40px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); padding: 52px 5%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-inner {
+      max-width: 1240px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { display: flex; flex-direction: column; gap: 6px; }
+    .footer-text-logo {
+      height: 52px; object-fit: contain; display: block;
+    }
+    .footer-tagline {
+      font-size: 0.58rem; letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-right {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+    }
+    .footer-contact {
+      font-size: 0.62rem; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.35); line-height: 1.8;
+      text-align: right;
+    }
+    .footer-credit {
+      font-size: 0.55rem; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.15); margin-top: 12px;
+    }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0; transform: translateY(44px);
+      transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-44px);
+      transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(44px);
+      transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.40s; }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes wireAnim {
+      0%,100% { opacity: 0.35; transform: scaleY(1);   }
+      50%      { opacity: 1;    transform: scaleY(1.15); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links { display: none; }
+      .intro-grid,
+      .founder-grid,
+      .vision-grid,
+      .logo-grid,
+      .exp-grid { grid-template-columns: 1fr; gap: 48px; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .philo-grid { grid-template-columns: 1fr; gap: 36px; }
+      .palette-grid { grid-template-columns: 1fr; }
+      .donts-grid { grid-template-columns: 1fr; }
+      .founder-photo { max-height: 340px; }
+      .footer-inner { flex-direction: column; gap: 28px; }
+      .footer-right { align-items: flex-start; }
+      .footer-contact { text-align: left; }
+      .intro, .founder, .vision, .mission, .values,
+      .philosophy, .palette, .typography, .logo-guide,
+      .experience, .future { padding: 96px 0; }
+      .section-wrap { padding: 0 6%; }
+    }
+    @media (max-width: 520px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress bar -->
+  <div id="progress"></div>
+
+  <!-- ════════════════════════════════
+       NAV
+  ════════════════════════════════ -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo-w.svg" alt="" class="nav-icon">
+      <img src="text-logo.svg" alt="AKOOK Jewelries" class="nav-text-logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#intro">Brand</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#values">Values</a></li>
+      <li><a href="#palette">Identity</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+
+    <div class="hero-content" id="heroContent">
+      <img class="hero-icon" src="logo-w.svg" alt="AKOOK">
+
+      <img class="hero-text-logo" src="text-logo.svg" alt="AKOOK Jewelries">
+      <div class="hero-rule"></div>
+      <p class="hero-byline">by khadija al dhabouni</p>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-wire"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       INTRO
+  ════════════════════════════════ -->
+  <section class="intro" id="intro">
+    <div class="section-wrap">
+      <div class="intro-grid">
+        <div class="reveal-left">
+          <p class="s-label">Brand Identity</p>
+          <h2 class="s-title">A Creative<br><em style="font-style:italic;">Identity</em></h2>
+          <p class="s-body">AKOOK Jewelries is not simply a jewellery brand — it is a creative identity shaped by passion for design, culture, and emotional storytelling. Proudly rooted in Oman, the brand reflects authentic local heritage and craftsmanship while aspiring to earn recognition on the global stage.</p>
+          <p class="s-body">The brand exists to transform jewellery from ornament into expression, creating pieces that reflect individuality, memory, and meaning. Every creation is approached as a narrative, carefully shaped through concept, aesthetics, and craftsmanship.</p>
+        </div>
+
+        <div class="reveal-right" style="position:relative;">
+          <div class="year-badge">Est. 2020 — Oman</div>
+          <p class="s-body" style="margin-bottom:0;">Rooted in artistic exploration and visual storytelling, AKOOK Jewelries embraces the balance between elegance and personality, offering designs that resonate beyond trends and seasons.</p>
+          <blockquote class="intro-statement">
+            "It is jewellery designed not only to be worn, but to be experienced."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       FOUNDER
+  ════════════════════════════════ -->
+  <section class="founder" id="founder">
+    <div class="founder-ghost">KHADIJA</div>
+    <div class="section-wrap">
+      <div class="founder-grid">
+        <div class="reveal-left">
+          <div class="founder-photo">
+            <img class="founder-photo-icon" src="logo-w.svg" alt="AKOOK">
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <p class="s-label">Founder</p>
+          <h2 class="founder-name">Khadija<br>Al Dhabouni</h2>
+          <p class="founder-role">Founder &amp; Creative Director</p>
+          <div class="founder-divider"></div>
+          <p class="s-body">Since founding AKOOK Jewelries in 2020, Khadija has been dedicated to designing unique and exquisite pieces that reflect Omani culture and craftsmanship. Her role encompasses the creative process from conceptualization to execution, ensuring each design resonates with elegance and authenticity.</p>
+          <p class="s-body" style="margin-top:16px;">She leads a talented team, oversees production, and manages marketing strategies to promote the brand. Her passion for jewelry design drives her to innovate and create pieces that celebrate the heritage of Oman, while also appealing to modern aesthetics.</p>
+          <p class="s-body" style="margin-top:16px;">In addition to being an entrepreneur, Khadija is an industry professional with demonstrable experience in the retail side of the real estate business in the Sultanate of Oman — garnering a wealth of knowledge in planning strategies and delivering high-end campaigns at Majid Al Futtaim malls.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       VISION
+  ════════════════════════════════ -->
+  <section class="vision" id="vision">
+    <div class="vision-bg-layer"></div>
+    <div class="section-wrap vision-inner">
+      <div class="reveal">
+        <p class="s-label">Vision</p>
+        <h2 class="s-title" style="max-width:700px;">To establish AKOOK as a distinctive creative jewellery house that bridges heritage and modern design.</h2>
+        <p class="s-body" style="max-width:620px;">The brand envisions a future where jewellery is valued for narrative, emotion, and artistic identity — not only aesthetics. Growth is guided by identity, ensuring innovation never compromises authenticity.</p>
+      </div>
+
+      <div class="vision-grid">
+        <div class="vision-card reveal d1">
+          <p class="vision-card-title">Influence Modern Storytelling</p>
+          <p class="vision-card-body">Shape how jewellery narratives are constructed and communicated, moving beyond surface aesthetics to deeper meaning.</p>
+        </div>
+        <div class="vision-card reveal d2">
+          <p class="vision-card-title">Represent Regional Creativity Globally</p>
+          <p class="vision-card-body">Present Omani craft, culture, and design language to audiences worldwide with confidence and pride.</p>
+        </div>
+        <div class="vision-card reveal d3">
+          <p class="vision-card-title">Build a Recognizable Artistic Signature</p>
+          <p class="vision-card-body">Develop a visual and emotional language that is instantly identifiable as AKOOK — unique, intentional, unforgettable.</p>
+        </div>
+        <div class="vision-card reveal d4">
+          <p class="vision-card-title">Expand Cultural Collaborations</p>
+          <p class="vision-card-body">Partner with artists, artisans, and creative institutions to enrich the brand's universe and broaden its impact.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       MISSION
+  ════════════════════════════════ -->
+  <section class="mission" id="mission">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Mission</p>
+        <h2 class="s-title">Our<br>Commitments</h2>
+      </div>
+      <div class="mission-list">
+        <div class="mission-item reveal d1">
+          <span class="mission-num">01</span>
+          <div>
+            <p class="mission-text-title">Design Rooted in Meaning</p>
+            <p class="mission-text-body">Every piece begins with a story. Inspiration, intention, and emotion are embedded before any aesthetic decision is made.</p>
+          </div>
+          <span class="mission-arrow">→</span>
+        </div>
+        <div class="mission-item reveal d2">
+          <span class="mission-num">02</span>
+          <div>
+            <p class="mission-text-title">Excellence in Craftsmanship</p>
+            <p class="mission-text-body">Precision, quality, and detail are never compromised. Each creation is held to the highest standard of artisanal execution.</p>
+          </div>
+          <span class="mission-arrow">→</span>
+        </div>
+        <div class="mission-item reveal d3">
+          <span class="mission-num">03</span>
+          <div>
+            <p class="mission-text-title">Cultural Sensitivity &amp; Modern Aesthetics</p>
+            <p class="mission-text-body">Heritage is the foundation; contemporary sensibility is the direction. Both coexist in every AKOOK design.</p>
+          </div>
+          <span class="mission-arrow">→</span>
+        </div>
+        <div class="mission-item reveal d4">
+          <span class="mission-num">04</span>
+          <div>
+            <p class="mission-text-title">Emotional Value for Customers</p>
+            <p class="mission-text-body">Jewellery that is felt, remembered, and cherished — connecting people to moments, memories, and identity.</p>
+          </div>
+          <span class="mission-arrow">→</span>
+        </div>
+        <div class="mission-item reveal d5">
+          <span class="mission-num">05</span>
+          <div>
+            <p class="mission-text-title">Premium Brand Experience</p>
+            <p class="mission-text-body">From the first touchpoint to the final unboxing — every interaction is elevated, intentional, and immersive.</p>
+          </div>
+          <span class="mission-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       CORE VALUES
+  ════════════════════════════════ -->
+  <section class="values" id="values">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Core Values</p>
+        <h2 class="s-title">What We<br>Stand For</h2>
+      </div>
+      <div class="values-grid">
+        <div class="val-card reveal d1">
+          <p class="val-n">01</p>
+          <h3 class="val-title">Authenticity</h3>
+          <p class="val-desc">True inspiration drives every design decision. Nothing is performed — every piece reflects genuine creative conviction.</p>
+        </div>
+        <div class="val-card reveal d2">
+          <p class="val-n">02</p>
+          <h3 class="val-title">Creativity</h3>
+          <p class="val-desc">Innovation and imagination shape the brand's evolution. We push boundaries while honoring the roots that ground us.</p>
+        </div>
+        <div class="val-card reveal d3">
+          <p class="val-n">03</p>
+          <h3 class="val-title">Craftsmanship</h3>
+          <p class="val-desc">Precision and quality are never compromised. The hands that shape each piece carry the weight of artisanal tradition.</p>
+        </div>
+        <div class="val-card reveal d4">
+          <p class="val-n">04</p>
+          <h3 class="val-title">Cultural<br>Appreciation</h3>
+          <p class="val-desc">Heritage inspires respectfully and thoughtfully. Omani identity is a source of pride and a creative compass.</p>
+        </div>
+        <div class="val-card reveal d5">
+          <p class="val-n">05</p>
+          <h3 class="val-title">Connection</h3>
+          <p class="val-desc">Jewellery is created to hold emotional relevance — to bind people to their stories, their love, their memory.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       DESIGN PHILOSOPHY
+  ════════════════════════════════ -->
+  <section class="philosophy" id="philosophy">
+    <div class="philo-bg-text">PHILOSOPHY</div>
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Design Philosophy</p>
+        <h2 class="s-title">Three Guiding<br>Principles</h2>
+      </div>
+      <div class="philo-grid">
+        <div class="philo-item reveal d1">
+          <p class="philo-num">Principle 01</p>
+          <h3 class="philo-title">Concept Before Decoration</h3>
+          <p class="philo-body">Every design begins with a clearly defined concept. Ornamentation follows meaning — never the other way around. The idea is the architecture; beauty is its expression.</p>
+        </div>
+        <div class="philo-item reveal d2">
+          <p class="philo-num">Principle 02</p>
+          <h3 class="philo-title">Emotion Embedded in Detail</h3>
+          <p class="philo-body">The smallest decisions carry the greatest weight. A curvature, a texture, a proportion — each detail is a deliberate act of emotional communication.</p>
+        </div>
+        <div class="philo-item reveal d3">
+          <p class="philo-num">Principle 03</p>
+          <h3 class="philo-title">Balance Between Tradition and Modernity</h3>
+          <p class="philo-body">Inspiration flows from nature, symbolism, architecture, and cultural elements — translated into modern forms that maintain elegance and wearability.</p>
+        </div>
+      </div>
+      <div class="philo-quote reveal">
+        <p class="philo-quote-text">"Jewellery designed not only to be worn, but to be experienced — felt, remembered, and passed down through generations."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       COLOR PALETTE
+  ════════════════════════════════ -->
+  <section class="palette" id="palette">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Brand Colors</p>
+        <h2 class="s-title">The Color<br>Palette</h2>
+        <p class="s-body" style="max-width:520px;">Three primary colors form the visual foundation of AKOOK Jewelries — each selected to communicate depth, luxury, and natural heritage.</p>
+      </div>
+      <div class="palette-grid">
+
+        <div class="swatch sw-black reveal d1">
+          <div class="swatch-inner"></div>
+          <div class="swatch-info">
+            <p class="swatch-hex">#000000</p>
+            <p class="swatch-name">Obsidian</p>
+            <p class="swatch-vals">C. 0 &nbsp;&nbsp; M. 0 &nbsp;&nbsp; Y. 0 &nbsp;&nbsp; K. 100<br>R. 0 &nbsp;&nbsp; G. 0 &nbsp;&nbsp; B. 0</p>
+          </div>
+        </div>
+
+        <div class="swatch sw-charcoal reveal d2">
+          <div class="swatch-inner"></div>
+          <span class="swatch-tag">Section Color</span>
+          <div class="swatch-info">
+            <p class="swatch-hex">#363330</p>
+            <p class="swatch-name">Charcoal</p>
+            <p class="swatch-vals">C. 67 &nbsp;&nbsp; M. 62 &nbsp;&nbsp; Y. 65 &nbsp;&nbsp; K. 59<br>R. 54 &nbsp;&nbsp; G. 51 &nbsp;&nbsp; B. 48</p>
+          </div>
+        </div>
+
+        <div class="swatch sw-forest reveal d3">
+          <div class="swatch-inner"></div>
+          <div class="swatch-info">
+            <p class="swatch-hex">#00371F</p>
+            <p class="swatch-name">Forest</p>
+            <p class="swatch-vals">C. 88 &nbsp;&nbsp; M. 47 &nbsp;&nbsp; Y. 88 &nbsp;&nbsp; K. 63<br>R. 0 &nbsp;&nbsp; G. 55 &nbsp;&nbsp; B. 31</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       TYPOGRAPHY
+  ════════════════════════════════ -->
+  <section class="typography" id="typography">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Typography</p>
+        <h2 class="s-title">Brand<br>Typefaces</h2>
+      </div>
+      <div class="type-specimen">
+        <div class="type-block reveal">
+          <div class="type-meta">
+            <div class="type-meta-item">
+              <span class="type-meta-label">Primary Font</span>
+              <span class="type-meta-value">BUDA</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">Classification</span>
+              <span class="type-meta-value">Serif — Display</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">Usage</span>
+              <span class="type-meta-value">Logotype, Headlines, Display</span>
+            </div>
+          </div>
+          <p class="type-display-en">AKOOK<br>Jewelries</p>
+          <p class="type-alphabet">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+          <p class="type-alphabet" style="margin-top:4px;">a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+          <p class="type-alphabet" style="margin-top:4px;">0 1 2 3 4 5 6 7 8 9</p>
+        </div>
+        <div class="type-block reveal" style="margin-top:48px;">
+          <div class="type-meta">
+            <div class="type-meta-item">
+              <span class="type-meta-label">Arabic Font</span>
+              <span class="type-meta-value">TAJM3 KUFI</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">Classification</span>
+              <span class="type-meta-value">Kufi — Arabic Script</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">Usage</span>
+              <span class="type-meta-value">Arabic Logotype, RTL Content</span>
+            </div>
+          </div>
+          <p class="type-display-ar">مُـجـوهـرات أكـــوك</p>
+          <p class="type-alphabet" dir="rtl" style="text-align:right;">
+            أ &nbsp;ب &nbsp;ت &nbsp;ث &nbsp;ج &nbsp;ح &nbsp;خ &nbsp;د &nbsp;ذ &nbsp;ر &nbsp;ز &nbsp;س &nbsp;ش &nbsp;ص &nbsp;ض &nbsp;ط &nbsp;ظ &nbsp;ع &nbsp;غ &nbsp;ف &nbsp;ق &nbsp;ك &nbsp;ل &nbsp;م &nbsp;ن &nbsp;ه &nbsp;و &nbsp;ي
+          </p>
+          <p class="type-alphabet" dir="rtl" style="text-align:right; margin-top:4px;">
+            ٠ &nbsp;١ &nbsp;٢ &nbsp;٣ &nbsp;٤ &nbsp;٥ &nbsp;٦ &nbsp;٧ &nbsp;٨ &nbsp;٩
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       LOGO GUIDELINES
+  ════════════════════════════════ -->
+  <section class="logo-guide" id="logo">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Logo Usage</p>
+        <h2 class="s-title">Logo<br>Variants</h2>
+        <p class="s-body" style="max-width:560px;">The AKOOK logo must always appear in its approved forms. The icon, wordmark, and sub-brand lockup must maintain their proportional relationships at all times.</p>
+      </div>
+
+      <div class="logo-grid reveal" style="margin-top:64px;">
+        <div class="logo-cell logo-on-black">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">On Black</p>
+        </div>
+        <div class="logo-cell logo-on-green">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">On Forest</p>
+        </div>
+        <div class="logo-cell logo-on-dark">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">On Charcoal</p>
+        </div>
+        <div class="logo-cell logo-on-cream">
+          <img src="logo-w.svg" class="logo-icon-cell" style="filter:invert(1);" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label">On Light</p>
+        </div>
+      </div>
+
+      <!-- Don'ts -->
+      <div class="donts reveal" style="margin-top:80px;">
+        <h3 class="donts-title">Incorrect Logo Usage</h3>
+        <div class="donts-grid">
+          <div class="dont-card">
+            <p class="dont-flag">Proportions</p>
+            <p class="dont-text">Do not change the size or proportional relationships of the logo elements. The icon and wordmark must always maintain their designed ratio.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">Rotation</p>
+            <p class="dont-text">Do not place the logo on an angle. The logotype must always appear upright and level, never tilted or rotated.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">Color Alteration</p>
+            <p class="dont-text">Do not change the value of the colors. They should not be lightened, darkened, or replaced with unapproved palette colors.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">Busy Backgrounds</p>
+            <p class="dont-text">Do not place the logo on complex, patterned, or photographic backgrounds that compromise legibility or brand recognition.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">Effects</p>
+            <p class="dont-text">Do not add drop shadows, glows, gradients, or any 3D effects to any element of the logo system.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">Outline Version</p>
+            <p class="dont-text">Do not use the logo as an outline-only version. The logotype must appear in its solid, approved weight at all times.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       BRAND EXPERIENCE
+  ════════════════════════════════ -->
+  <section class="experience" id="experience">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Brand Experience</p>
+        <h2 class="s-title">Every Touchpoint<br>Matters</h2>
+        <p class="s-body" style="max-width:580px;">The identity of AKOOK Jewelries extends beyond product design. Every interaction is crafted to feel intentional — turning ownership into experience and memory.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-item reveal d1">
+          <span class="exp-num">01</span>
+          <div>
+            <p class="exp-title">Editorial Photography</p>
+            <p class="exp-desc">All product imagery follows an editorial aesthetic — considered composition, refined lighting, and atmospheric storytelling that elevates each piece.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d2">
+          <span class="exp-num">02</span>
+          <div>
+            <p class="exp-title">Premium Packaging</p>
+            <p class="exp-desc">Packaging is an extension of the jewel itself. Forest green, gold foil, and the brand icon create an unboxing experience that feels like a gift each time.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d3">
+          <span class="exp-num">03</span>
+          <div>
+            <p class="exp-title">Visual Storytelling</p>
+            <p class="exp-desc">Each collection is presented as a visual narrative — with mood boards, campaign imagery, and creative direction that communicate far beyond the product.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d4">
+          <span class="exp-num">04</span>
+          <div>
+            <p class="exp-title">Artistic Collaborations</p>
+            <p class="exp-desc">Partnerships with artists, photographers, and cultural creatives expand the brand's universe and strengthen its identity as a platform for art.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d5">
+          <span class="exp-num">05</span>
+          <div>
+            <p class="exp-title">Curated Brand Communication</p>
+            <p class="exp-desc">Every caption, message, and customer interaction carries the brand's voice — thoughtful, refined, and deeply intentional.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d5" style="transition-delay:.45s;">
+          <span class="exp-num">06</span>
+          <div>
+            <p class="exp-title">Interior &amp; Retail Space</p>
+            <p class="exp-desc">The physical store at Mall of Oman is designed as an immersive environment — where architecture, materiality, and display unite under the AKOOK identity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       FUTURE DIRECTION
+  ════════════════════════════════ -->
+  <section class="future" id="future">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">Future Direction</p>
+        <h2 class="s-title">Looking<br>Forward</h2>
+        <p class="s-body" style="max-width:540px;">AKOOK Jewelries continues evolving through creative ambition and strategic growth. Growth is guided by identity — ensuring innovation never compromises authenticity.</p>
+      </div>
+      <div class="future-list">
+        <div class="fut-item reveal d1">
+          <span class="fut-title">Launching concept-driven collections</span>
+          <span class="fut-arrow">→</span>
+        </div>
+        <div class="fut-item reveal d2">
+          <span class="fut-title">Participating in regional and global exhibitions</span>
+          <span class="fut-arrow">→</span>
+        </div>
+        <div class="fut-item reveal d3">
+          <span class="fut-title">Developing signature iconic pieces</span>
+          <span class="fut-arrow">→</span>
+        </div>
+        <div class="fut-item reveal d4">
+          <span class="fut-title">Expanding digital storytelling presence</span>
+          <span class="fut-arrow">→</span>
+        </div>
+        <div class="fut-item reveal d5">
+          <span class="fut-title">Strengthening artistic collaborations</span>
+          <span class="fut-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       CLOSING
+  ════════════════════════════════ -->
+  <section class="closing">
+    <div class="closing-bg"></div>
+    <div class="closing-ghost">AKOOK</div>
+    <div class="closing-inner reveal">
+      <img class="closing-logo" src="logo-w.svg" alt="AKOOK">
+      <div class="closing-rule"></div>
+      <blockquote class="closing-quote">
+        "AKOOK Jewelries represents more than craftsmanship — it represents identity, expression, and storytelling. Each piece is designed to capture emotion and preserve memory, reflecting moments, heritage, and individuality."
+      </blockquote>
+      <div class="closing-rule"></div>
+      <img class="closing-text-logo" src="text-logo.svg" alt="AKOOK Jewelries">
+      <p class="closing-year">Rebranding &nbsp;|&nbsp; Logo &amp; Brand Identity &nbsp;|&nbsp; 2023</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo-wrap">
+          <img src="logo-w.svg" alt="" class="footer-icon">
+          <img src="text-logo.svg" alt="AKOOK Jewelries" class="footer-text-logo">
+        </div>
+        <span class="footer-tagline">by khadija al dhabouni</span>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact">
+          <span>@akookjewelries</span><br>
+          <span>+968 71685555</span><br>
+          <span>Mall of Oman, Muscat</span>
+        </div>
+        <p class="footer-credit">Brand Book 2023 &nbsp;—&nbsp; Design by White Studio, Rawan Essam</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── PROGRESS BAR ─── */
+    const progress = document.getElementById('progress');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (scrollTop / docHeight * 100) + '%';
+    }
+
+    /* ─── NAV SCROLL STATE ─── */
+    const nav = document.getElementById('nav');
+    function updateNav() {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }
+
+    /* ─── HERO PARALLAX ─── */
+    const heroContent = document.getElementById('heroContent');
+    function updateHeroParallax() {
+      if (!heroContent) return;
+      const y = window.scrollY;
+      heroContent.style.transform = `translateY(${y * 0.38}px)`;
+      heroContent.style.opacity = 1 - (y / window.innerHeight) * 1.4;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ─── CONSOLIDATED SCROLL HANDLER ─── */
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateProgress();
+          updateNav();
+          updateHeroParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ─── SMOOTH ANCHOR SCROLL ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    /* ─── CURSOR FADE ON CLOSING ─── */
+    const closing = document.querySelector('.closing');
+    if (closing) {
+      const closingObserver = new IntersectionObserver(([entry]) => {
+        closing.style.transition = 'opacity 1s ease';
+      }, { threshold: 0.1 });
+      closingObserver.observe(closing);
+    }
+  </script>
+</body>
+</html>
