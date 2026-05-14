@@ -177,7 +177,7 @@ Three principles guide all creative decisions at AKOOK:
 
 <br>
 
-*AKOOK Jewelries — Rebranding · Logo & Brand Identity · 2023*
+*AKOOK Jewelries — Rebranding · Logo & Brand Identity*
 
 *Mall of Oman, Muscat &nbsp;·&nbsp; @akookjewelries &nbsp;·&nbsp; +968 71685555*
 
