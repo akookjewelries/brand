@@ -787,6 +787,19 @@
       font-size: 0.55rem; letter-spacing: 0.2em;
       color: rgba(255,255,255,0.12); margin-top: 12px;
     }
+    .lang-bar {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 18px; padding-top: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .lang-bar a {
+      font-size: 0.6rem; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .lang-bar a:hover { color: var(--gold); }
+    .lang-current { font-size: 0.6rem; letter-spacing: 0.14em; color: var(--gold); }
+    .lang-sep { font-size: 0.5rem; color: rgba(255,255,255,0.12); }
 
     /* ─── REVEAL ANIMATIONS ─── */
     .reveal {
@@ -1459,6 +1472,13 @@
           <span>Mall of Oman, Muscat</span>
         </div>
         <p class="footer-credit">Brand Book 2026 &nbsp;—&nbsp; Design by <span class="om">SBC</span></p>
+        <div class="lang-bar">
+          <span class="lang-current">EN</span>
+          <span class="lang-sep">·</span>
+          <a href="index-fa.html">فارسی</a>
+          <span class="lang-sep">·</span>
+          <a href="index-ar.html">عربي</a>
+        </div>
       </div>
     </div>
   </footer>

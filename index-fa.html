@@ -544,6 +544,19 @@
     .footer-right { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
     .footer-contact { font-size: 0.75rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.3); line-height: 1.9; font-family: 'Vazirmatn', sans-serif; }
     .footer-credit { font-size: 0.65rem; letter-spacing: 0.06em; color: rgba(255,255,255,0.12); margin-top: 12px; font-family: 'Vazirmatn', sans-serif; }
+    .lang-bar {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 18px; padding-top: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .lang-bar a {
+      font-size: 0.6rem; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color 0.3s; font-family: 'Vazirmatn', sans-serif;
+    }
+    .lang-bar a:hover { color: var(--gold); }
+    .lang-current { font-size: 0.6rem; letter-spacing: 0.1em; color: var(--gold); font-family: 'Vazirmatn', sans-serif; }
+    .lang-sep { font-size: 0.5rem; color: rgba(255,255,255,0.12); }
 
     /* ─── REVEAL ANIMATIONS ─── */
     .reveal { opacity: 0; transform: translateY(48px); transition: opacity 0.95s cubic-bezier(.16,1,.3,1), transform 0.95s cubic-bezier(.16,1,.3,1); }
@@ -1110,6 +1123,13 @@
           <span>مال عمان، مسقط</span>
         </div>
         <p class="footer-credit">کتاب برند ۱۴۰۲ &nbsp;—&nbsp; طراحی توسط White Studio، روان عصام</p>
+        <div class="lang-bar">
+          <span class="lang-current">فارسی</span>
+          <span class="lang-sep">·</span>
+          <a href="index.html">EN</a>
+          <span class="lang-sep">·</span>
+          <a href="index-ar.html">عربي</a>
+        </div>
       </div>
     </div>
   </footer>

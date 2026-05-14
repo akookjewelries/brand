@@ -33,7 +33,9 @@ AKOOK is not simply a jewellery brand — it is a creative identity shaped by pa
 
 | File | Description |
 |---|---|
-| `brandbook.html` | Interactive digital brand book — parallax, animated, single-file |
+| `index.html` | Interactive digital brand book — English |
+| `index-fa.html` | Interactive digital brand book — Persian (فارسی) |
+| `index-ar.html` | Interactive digital brand book — Arabic (عربي) |
 | `logo-w.svg` | Primary brand icon (white, SVG vector) |
 | `text-logo.svg` | Full wordmark lockup — AKOOK JEWELRIES (white, SVG vector) |
 
@@ -116,11 +118,21 @@ The AKOOK logo system consists of two elements — the **icon** (knotwork mark) 
 
 ## Brand Book
 
-The `brandbook.html` is a fully self-contained interactive brand presentation. Open it directly in any modern browser — no build tools, no server required.
+Three fully self-contained interactive brand presentations — one per language. Open directly in any modern browser, no build tools or server required.
 
 ```bash
-open brandbook.html
+open index.html       # English
+open index-fa.html    # Persian — فارسی
+open index-ar.html    # Arabic — عربي
 ```
+
+**Language versions:**
+
+| Language | File | Direction |
+|---|---|---|
+| English | [`index.html`](index.html) | LTR |
+| Persian | [`index-fa.html`](index-fa.html) | RTL |
+| Arabic | [`index-ar.html`](index-ar.html) | RTL |
 
 **Features:**
 - Parallax hero with animated gold particles and floating logo
