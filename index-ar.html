@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مجوهرات أكوك — دليل الهوية ٢٠٢٣</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200;300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:       #000000;
+      --charcoal:    #363330;
+      --forest:      #00371f;
+      --deep-forest: #001f12;
+      --white:       #ffffff;
+      --gold:        #c9a462;
+      --gold-light:  #e8d5a3;
+      --cream:       #faf6f1;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: none;
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px;
+      opacity: 0.022;
+      pointer-events: none;
+      z-index: 9990;
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor {
+      position: fixed; width: 6px; height: 6px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+    }
+    .cursor-ring {
+      position: fixed; width: 32px; height: 32px;
+      border: 1px solid rgba(201,164,98,0.45); border-radius: 50%;
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s cubic-bezier(.16,1,.3,1), height 0.4s cubic-bezier(.16,1,.3,1),
+                  border-color 0.3s ease, opacity 0.4s ease;
+    }
+    @media (hover: none) {
+      .cursor, .cursor-ring { display: none; }
+      body { cursor: default; }
+    }
+
+    /* ─── PROGRESS BAR ─── */
+    #progress {
+      position: fixed; top: 0; right: 0; height: 2px; width: 0%;
+      background: linear-gradient(270deg, var(--forest), var(--gold), var(--gold-light));
+      z-index: 9999;
+      box-shadow: 0 0 10px rgba(201,164,98,0.55);
+      transition: width 0.1s linear;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 28px 56px;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: all 0.5s ease;
+    }
+    nav.scrolled {
+      background: rgba(0,0,0,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 16px 56px;
+      border-bottom: 1px solid rgba(201,164,98,0.1);
+    }
+    .nav-logo {
+      text-decoration: none; color: var(--white);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo .nav-icon { width: 26px; height: 26px; object-fit: contain; flex-shrink: 0; }
+    .nav-logo .nav-text-logo { height: 22px; object-fit: contain; display: block; }
+    .closing-logo {
+      width: 68px; height: 68px; display: block; margin: 0 auto 32px;
+      object-fit: contain; opacity: 0.92;
+      animation: iconFloat 6s ease-in-out 0.5s infinite;
+    }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 16px; }
+    .footer-logo-wrap .footer-icon { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color 0.3s; position: relative;
+      font-family: 'Cairo', sans-serif; font-weight: 300;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; right: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 65% 58% at 72% 72%, rgba(0,55,31,0.9) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 55% at 26% 24%, rgba(201,164,98,0.04) 0%, transparent 55%),
+        linear-gradient(158deg, #001a0e 0%, #000000 100%);
+    }
+    .hero-lines { position: absolute; inset: 0; overflow: hidden; opacity: 0.04; }
+    .hero-lines::before {
+      content: ''; position: absolute; inset: -100%;
+      background-image: repeating-linear-gradient(
+        45deg, transparent, transparent 68px,
+        rgba(201,164,98,0.5) 68px, rgba(201,164,98,0.5) 69px
+      );
+    }
+    .hero-vignette {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 72% 72% at 50% 50%, transparent 28%, rgba(0,0,0,0.5) 100%);
+      z-index: 2;
+    }
+    .hero-content { position: relative; z-index: 3; text-align: center; will-change: transform; }
+    .hero-icon-wrap {
+      width: 90px; height: 90px; margin: 0 auto 42px;
+      position: relative; display: flex; align-items: center; justify-content: center;
+      animation: iconFloat 6s ease-in-out 1.8s infinite;
+    }
+    .hero-icon-wrap::before {
+      content: ''; position: absolute; inset: -22px;
+      background: radial-gradient(circle, rgba(201,164,98,0.18) 0%, transparent 65%);
+      animation: glowPulse 3.5s ease-in-out infinite; border-radius: 50%;
+    }
+    .hero-icon {
+      width: 90px; height: 90px;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 1s ease forwards 0.4s;
+      display: block; object-fit: contain; position: relative; z-index: 1;
+    }
+    .hero-text-logo {
+      display: block; width: min(500px, 78vw); object-fit: contain;
+      opacity: 0; transform: translateY(28px);
+      animation: fadeUp 1.3s ease forwards 0.7s; margin: 0 auto;
+    }
+    .hero-rule {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, transparent, rgba(201,164,98,0.45), transparent);
+      margin: 40px auto; opacity: 0; animation: fadeIn 1s ease forwards 1.4s;
+    }
+    .hero-byline {
+      font-family: 'Amiri', serif; font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.36); letter-spacing: 0.02em;
+      opacity: 0; animation: fadeIn 1s ease forwards 1.6s;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      opacity: 0; animation: fadeIn 1s ease forwards 2.2s; z-index: 3;
+    }
+    .scroll-hint span {
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.26); font-family: 'Cairo', sans-serif;
+    }
+    .scroll-wire {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(201,164,98,0.55), transparent);
+      animation: wireAnim 2s ease-in-out infinite;
+    }
+
+    /* ─── HERO PARTICLES ─── */
+    #heroParticles { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+    .hero-particle { position: absolute; background: var(--gold); border-radius: 50%; animation: particleDrift linear infinite; }
+
+    /* ─── SECTION COMMONS ─── */
+    .section-wrap { max-width: 1240px; margin: 0 auto; padding: 0 5%; }
+    .s-label {
+      font-size: 0.68rem; letter-spacing: 0.12em;
+      color: var(--gold); font-family: 'Cairo', sans-serif; font-weight: 400;
+      display: flex; align-items: center; gap: 14px; flex-direction: row-reverse;
+      margin-bottom: 32px;
+    }
+    .s-label::before { content: ''; display: block; width: 36px; height: 1px; background: var(--gold); }
+    .s-label::after  { content: ''; display: block; width: 18px; height: 1px; background: var(--gold); }
+    .s-title {
+      font-family: 'Amiri', serif;
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      font-weight: 400; line-height: 1.2; margin-bottom: 28px;
+    }
+    .s-body {
+      font-size: 0.88rem; line-height: 2.1;
+      color: rgba(255,255,255,0.58); font-weight: 300;
+    }
+    .s-body + .s-body { margin-top: 18px; }
+
+    /* ─── INTRO ─── */
+    .intro { padding: 160px 0; background: var(--charcoal); overflow: hidden; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .year-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,164,98,0.35);
+      padding: 10px 22px; margin-bottom: 32px;
+      font-size: 0.72rem; letter-spacing: 0.08em;
+      color: var(--gold); background: rgba(201,164,98,0.04);
+      font-family: 'Cairo', sans-serif;
+    }
+    .intro-statement {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 400; line-height: 1.7;
+      color: rgba(255,255,255,0.82);
+      border-right: 2px solid var(--gold);
+      padding-right: 28px; margin-top: 36px;
+      font-style: italic;
+    }
+
+    /* ─── FOUNDER ─── */
+    .founder { padding: 160px 0; background: var(--forest); position: relative; overflow: hidden; }
+    .founder-ghost {
+      position: absolute; top: 50%; right: -2%;
+      transform: translateY(-50%);
+      font-family: 'Amiri', serif;
+      font-size: clamp(7rem, 18vw, 16rem);
+      font-weight: 700; color: rgba(255,255,255,0.02);
+      white-space: nowrap; pointer-events: none; line-height: 1;
+    }
+    .founder-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start; position: relative; z-index: 1;
+    }
+    .founder-photo {
+      aspect-ratio: 3/4;
+      background: linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .founder-photo::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 20%, rgba(201,164,98,0.13) 0%, transparent 65%);
+    }
+    .founder-photo::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .founder-photo-icon { width: 120px; height: 120px; opacity: 0.18; object-fit: contain; }
+    .founder-name {
+      font-family: 'Amiri', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700; margin-bottom: 8px; line-height: 1.3;
+    }
+    .founder-role {
+      font-size: 0.7rem; letter-spacing: 0.06em;
+      color: var(--gold); margin-bottom: 36px;
+      font-family: 'Cairo', sans-serif; font-weight: 300;
+    }
+    .founder-divider { width: 48px; height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 36px; }
+
+    /* ─── VISION ─── */
+    .vision { padding: 180px 0; background: var(--black); position: relative; overflow: hidden; }
+    .vision-bg-layer {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 85% at 28% 55%, rgba(0,55,31,0.28) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .vision-inner { position: relative; z-index: 1; }
+    .vision-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; margin-top: 72px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .vision-card {
+      padding: 48px 40px; background: rgba(255,255,255,0.02);
+      transition: all 0.45s cubic-bezier(.16,1,.3,1); position: relative; overflow: hidden;
+    }
+    .vision-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(270deg, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: right; transition: transform 0.55s ease;
+    }
+    .vision-card::after {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: radial-gradient(ellipse 80% 80% at 80% 20%, rgba(0,55,31,0.22) 0%, transparent 70%);
+      transition: opacity 0.45s ease;
+    }
+    .vision-card:hover { background: rgba(0,55,31,0.12); }
+    .vision-card:hover::before { transform: scaleX(1); }
+    .vision-card:hover::after { opacity: 1; }
+    .vision-card-title {
+      font-family: 'Amiri', serif; font-size: 1.6rem; margin-bottom: 16px; font-weight: 700;
+      position: relative; z-index: 1;
+    }
+    .vision-card-body {
+      font-size: 0.82rem; line-height: 1.95; color: rgba(255,255,255,0.46); font-weight: 300;
+      position: relative; z-index: 1;
+    }
+
+    /* ─── MISSION ─── */
+    .mission { padding: 160px 0; background: var(--charcoal); }
+    .mission-list { margin-top: 72px; }
+    .mission-item {
+      display: flex; align-items: flex-start; gap: 36px;
+      padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: padding-right 0.45s cubic-bezier(.16,1,.3,1); cursor: default;
+    }
+    .mission-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .mission-item:hover { padding-right: 16px; }
+    .mission-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; color: rgba(201,164,98,0.12);
+      line-height: 1; flex-shrink: 0; width: 56px; text-align: center;
+      transition: color 0.35s;
+    }
+    .mission-item:hover .mission-num { color: rgba(201,164,98,0.3); }
+    .mission-text-title { font-family: 'Amiri', serif; font-size: 1.5rem; margin-bottom: 10px; font-weight: 700; }
+    .mission-text-body { font-size: 0.84rem; color: rgba(255,255,255,0.48); line-height: 1.9; font-weight: 300; }
+    .mission-arrow {
+      margin-right: auto; color: var(--gold);
+      font-size: 1.1rem; opacity: 0;
+      transition: opacity 0.3s, transform 0.3s; flex-shrink: 0; align-self: center;
+    }
+    .mission-item:hover .mission-arrow { opacity: 1; transform: translateX(-5px); }
+
+    /* ─── CORE VALUES ─── */
+    .values { padding: 160px 0; background: var(--deep-forest); overflow: hidden; }
+    .values-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; margin-top: 72px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .val-card {
+      padding: 56px 28px;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.5s cubic-bezier(.16,1,.3,1); position: relative; overflow: hidden;
+    }
+    .val-card:last-child { border-left: none; }
+    .val-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(201,164,98,0.07) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .val-card::after {
+      content: ''; position: absolute; bottom: 0; right: 0; height: 2px;
+      width: 0; background: linear-gradient(270deg, var(--gold), var(--gold-light));
+      transition: width 0.5s cubic-bezier(.16,1,.3,1);
+    }
+    .val-card:hover { background: rgba(255,255,255,0.03); transform: translateY(-5px); }
+    .val-card:hover::before { opacity: 1; }
+    .val-card:hover::after { width: 100%; }
+    .val-n { font-size: 0.6rem; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 22px; font-family: 'Cormorant Garamond', serif; }
+    .val-title { font-family: 'Amiri', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 18px; line-height: 1.3; }
+    .val-desc { font-size: 0.78rem; line-height: 1.95; color: rgba(255,255,255,0.42); font-weight: 300; }
+
+    /* ─── DESIGN PHILOSOPHY ─── */
+    .philosophy { padding: 160px 0; background: var(--black); overflow: hidden; position: relative; }
+    .philo-bg-text {
+      position: absolute; bottom: -6%; left: 50%; transform: translateX(-50%);
+      font-family: 'Amiri', serif; font-size: clamp(8rem, 22vw, 18rem);
+      font-weight: 700; color: rgba(255,255,255,0.012);
+      white-space: nowrap; pointer-events: none; letter-spacing: 0.05em;
+    }
+    .philo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; margin-top: 80px; position: relative; z-index: 1; }
+    .philo-item { padding-right: 28px; border-right: 1px solid rgba(201,164,98,0.5); transition: border-color 0.4s; }
+    .philo-item:hover { border-color: var(--gold); }
+    .philo-num { font-size: 0.7rem; letter-spacing: 0.08em; color: rgba(201,164,98,0.65); margin-bottom: 20px; transition: color 0.4s; font-family: 'Cairo', sans-serif; }
+    .philo-item:hover .philo-num { color: var(--gold); }
+    .philo-title { font-family: 'Amiri', serif; font-size: 1.85rem; font-weight: 700; margin-bottom: 20px; line-height: 1.35; }
+    .philo-body { font-size: 0.84rem; line-height: 1.95; color: rgba(255,255,255,0.46); font-weight: 300; }
+    .philo-quote { margin-top: 88px; padding-top: 72px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; position: relative; z-index: 1; }
+    .philo-quote-text {
+      font-family: 'Amiri', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+      font-weight: 400; font-style: italic;
+      color: rgba(255,255,255,0.55);
+      max-width: 820px; margin: 0 auto; line-height: 1.9;
+    }
+
+    /* ─── COLOR PALETTE ─── */
+    .palette { padding: 160px 0; background: var(--charcoal); }
+    .palette-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 72px; }
+    .swatch {
+      aspect-ratio: 4/5; position: relative; overflow: hidden;
+      transition: transform 0.5s cubic-bezier(.16,1,.3,1), box-shadow 0.5s ease;
+      outline: 1px solid rgba(255,255,255,0.14); outline-offset: 0;
+    }
+    .swatch:hover { transform: translateY(-10px); box-shadow: 0 32px 64px rgba(0,0,0,0.5); }
+    .sw-black  .swatch-inner { background: #000000; }
+    .sw-charcoal .swatch-inner { background: #363330; }
+    .sw-forest .swatch-inner { background: #00371f; }
+    .swatch-inner { position: absolute; inset: 0; }
+    .sw-charcoal { outline: 2px solid var(--gold); outline-offset: 5px; box-shadow: 0 0 0 7px rgba(201,164,98,0.07), 0 20px 50px rgba(0,0,0,0.55); }
+    .sw-charcoal:hover { box-shadow: 0 0 0 7px rgba(201,164,98,0.14), 0 32px 64px rgba(0,0,0,0.65); }
+    .swatch-tag {
+      position: absolute; top: 18px; left: 18px; z-index: 2;
+      font-size: 0.6rem; letter-spacing: 0.04em;
+      background: var(--gold); color: #000;
+      padding: 5px 10px; font-weight: 600; font-family: 'Cairo', sans-serif;
+    }
+    .swatch-info {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 26px;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.28) 65%, transparent 100%);
+    }
+    .swatch-hex { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; letter-spacing: 0.24em; font-weight: 500; margin-bottom: 6px; direction: ltr; text-align: left; }
+    .swatch-name { font-family: 'Amiri', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 8px; }
+    .swatch-vals { font-family: 'Montserrat', sans-serif; font-size: 0.54rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.44); line-height: 1.9; direction: ltr; text-align: left; }
+
+    /* ─── TYPOGRAPHY ─── */
+    .typography { padding: 160px 0; background: var(--forest); }
+    .type-specimen { margin-top: 72px; border-top: 1px solid rgba(255,255,255,0.1); }
+    .type-block { padding: 60px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .type-meta { display: flex; gap: 44px; margin-bottom: 36px; flex-direction: row-reverse; justify-content: flex-end; }
+    .type-meta-item { display: flex; flex-direction: column; gap: 6px; }
+    .type-meta-label { font-size: 0.68rem; letter-spacing: 0.06em; color: var(--gold); font-family: 'Cairo', sans-serif; }
+    .type-meta-value { font-size: 0.72rem; color: rgba(255,255,255,0.46); letter-spacing: 0.08em; font-weight: 300; font-family: 'Montserrat', sans-serif; }
+    .type-display-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; line-height: 0.9;
+      letter-spacing: 0.05em; margin-bottom: 24px; direction: ltr; text-align: left;
+    }
+    .type-alphabet { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.42); line-height: 2.4; font-weight: 300; direction: ltr; text-align: left; }
+    .type-display-ar { font-family: 'Amiri', serif; font-size: clamp(2rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.4; margin-bottom: 16px; }
+
+    /* ─── LOGO GUIDELINES ─── */
+    .logo-guide { padding: 160px 0; background: var(--black); }
+    .logo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 72px; }
+    .logo-cell {
+      padding: 80px 52px; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+      min-height: 280px; transition: filter 0.35s;
+    }
+    .logo-cell:hover { filter: brightness(1.06); }
+    .logo-on-black  { background: #000000; }
+    .logo-on-green  { background: #00371f; }
+    .logo-on-dark   { background: #363330; }
+    .logo-on-cream  { background: var(--cream); }
+    .logo-cell-label { font-size: 0.68rem; letter-spacing: 0.04em; margin-top: 8px; font-family: 'Cairo', sans-serif; font-weight: 300; }
+    .logo-on-cream .logo-cell-label { color: rgba(0,0,0,0.32); }
+    .logo-icon-cell { width: 56px; height: 56px; object-fit: contain; display: block; }
+    .logo-text-lockup { width: 145px; object-fit: contain; display: block; }
+    .logo-on-cream .logo-text-lockup { filter: invert(1); }
+
+    /* ─── Donts ─── */
+    .donts { margin-top: 88px; }
+    .donts-title { font-family: 'Amiri', serif; font-size: 2rem; margin-bottom: 40px; font-weight: 700; }
+    .donts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .dont-card { padding: 32px 28px; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.35s, background 0.35s; }
+    .dont-card:hover { border-color: rgba(192,57,43,0.35); background: rgba(192,57,43,0.04); }
+    .dont-flag {
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      color: #c0392b; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px; flex-direction: row-reverse; justify-content: flex-end;
+      font-family: 'Cairo', sans-serif;
+    }
+    .dont-flag::before { content: '✕'; font-size: 0.6rem; }
+    .dont-text { font-size: 0.82rem; line-height: 1.85; color: rgba(255,255,255,0.46); font-weight: 300; }
+
+    /* ─── BRAND EXPERIENCE ─── */
+    .experience { padding: 160px 0; background: var(--forest); position: relative; overflow: hidden; }
+    .exp-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; margin-top: 72px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .exp-item {
+      padding: 48px 52px;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: flex-start; gap: 32px;
+      transition: background 0.4s ease;
+    }
+    .exp-item:hover { background: rgba(255,255,255,0.04); }
+    .exp-num { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; color: rgba(201,164,98,0.1); line-height: 1; flex-shrink: 0; transition: color 0.4s; }
+    .exp-item:hover .exp-num { color: rgba(201,164,98,0.25); }
+    .exp-title { font-family: 'Amiri', serif; font-size: 1.4rem; margin-bottom: 12px; font-weight: 700; }
+    .exp-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.9; font-weight: 300; }
+
+    /* ─── FUTURE ─── */
+    .future { padding: 160px 0; background: var(--charcoal); overflow: hidden; }
+    .future-list { margin-top: 72px; }
+    .fut-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 32px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: padding-right 0.45s cubic-bezier(.16,1,.3,1), color 0.3s ease; cursor: default;
+    }
+    .fut-item:first-child { border-top: 1px solid rgba(255,255,255,0.05); }
+    .fut-item:hover { padding-right: 20px; color: var(--gold); }
+    .fut-title { font-family: 'Amiri', serif; font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 400; }
+    .fut-arrow { color: var(--gold); opacity: 0; transition: opacity 0.3s, transform 0.35s; }
+    .fut-item:hover .fut-arrow { opacity: 1; transform: translateX(-8px); }
+
+    /* ─── CLOSING ─── */
+    .closing { padding: 220px 5%; background: var(--forest); text-align: center; position: relative; overflow: hidden; }
+    .closing-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 55% 70% at 50% 50%, rgba(0,55,31,0.95) 0%, var(--deep-forest) 70%, #000 100%);
+      pointer-events: none;
+    }
+    .closing-ghost {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'Amiri', serif; font-size: clamp(10rem, 28vw, 22rem);
+      font-weight: 700; color: rgba(255,255,255,0.018);
+      white-space: nowrap; pointer-events: none; letter-spacing: 0.08em;
+    }
+    .closing-inner { position: relative; z-index: 1; }
+    .closing-rule { width: 56px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 52px; }
+    .closing-quote {
+      font-family: 'Amiri', serif; font-size: clamp(1.3rem, 3vw, 2.1rem);
+      font-weight: 400; font-style: italic; line-height: 1.85;
+      max-width: 820px; margin: 0 auto 64px; color: rgba(255,255,255,0.78);
+    }
+    .closing-text-logo { display: block; width: min(400px, 75vw); object-fit: contain; margin: 0 auto; opacity: 0.95; }
+    .closing-year { font-size: 0.72rem; letter-spacing: 0.08em; color: rgba(201,164,98,0.6); margin-top: 44px; font-family: 'Cairo', sans-serif; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--black); padding: 60px 5%; position: relative; }
+    footer::before {
+      content: ''; position: absolute; top: 0; left: 5%; right: 5%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,164,98,0.3), transparent);
+    }
+    .footer-inner { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-left { display: flex; flex-direction: column; gap: 8px; }
+    .footer-text-logo { height: 52px; object-fit: contain; display: block; }
+    .footer-tagline { font-size: 0.72rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.28); font-family: 'Cairo', sans-serif; }
+    .footer-right { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .footer-contact { font-size: 0.75rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.3); line-height: 1.9; font-family: 'Cairo', sans-serif; }
+    .footer-credit { font-size: 0.65rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.12); margin-top: 12px; font-family: 'Cairo', sans-serif; }
+
+    /* ─── REVEAL ANIMATIONS ─── */
+    .reveal { opacity: 0; transform: translateY(48px); transition: opacity 0.95s cubic-bezier(.16,1,.3,1), transform 0.95s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(48px); transition: opacity 0.95s cubic-bezier(.16,1,.3,1), transform 0.95s cubic-bezier(.16,1,.3,1); }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(-48px); transition: opacity 0.95s cubic-bezier(.16,1,.3,1), transform 0.95s cubic-bezier(.16,1,.3,1); }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .d1 { transition-delay: 0.08s; } .d2 { transition-delay: 0.17s; }
+    .d3 { transition-delay: 0.26s; } .d4 { transition-delay: 0.35s; }
+    .d5 { transition-delay: 0.44s; }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeUp  { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn  { to { opacity: 1; } }
+    @keyframes wireAnim { 0%,100% { opacity: 0.4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.15); } }
+    @keyframes iconFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-13px); } }
+    @keyframes glowPulse { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.14); } }
+    @keyframes particleDrift {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.65; }
+      100% { transform: translateY(-110px) scale(0); opacity: 0; }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 13px 24px; }
+      .nav-links { display: none; }
+      .intro-grid, .founder-grid, .vision-grid, .logo-grid, .exp-grid { grid-template-columns: 1fr; gap: 48px; }
+      .vision-grid { gap: 0; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .philo-grid { grid-template-columns: 1fr; gap: 40px; }
+      .donts-grid { grid-template-columns: 1fr; }
+      .founder-photo { max-height: 340px; }
+      .footer-inner { flex-direction: column; gap: 32px; }
+      .footer-right { align-items: flex-end; }
+      .intro, .founder, .vision, .mission, .values, .philosophy, .palette, .typography, .logo-guide, .experience, .future { padding: 100px 0; }
+      .section-wrap { padding: 0 6%; }
+      .palette-grid { grid-template-columns: 1fr; gap: 18px; }
+      .swatch { aspect-ratio: unset; height: 130px; display: flex; flex-direction: row-reverse; outline: 1px solid rgba(255,255,255,0.14); }
+      .sw-charcoal { outline: 2px solid var(--gold); outline-offset: 4px; box-shadow: 0 0 0 6px rgba(201,164,98,0.08), 0 12px 36px rgba(0,0,0,0.5); }
+      .swatch-inner { position: relative; inset: auto; width: 130px; height: 130px; flex-shrink: 0; }
+      .swatch-info { position: relative; bottom: auto; left: auto; right: auto; flex: 1; padding: 22px 26px; background: rgba(0,0,0,0.52); display: flex; flex-direction: column; justify-content: center; }
+      .swatch-hex { font-size: 0.65rem; margin-bottom: 4px; }
+      .swatch-name { font-size: 1.2rem; margin-bottom: 4px; }
+      .swatch-vals { font-size: 0.5rem; }
+      .swatch-tag { top: 10px; left: 10px; right: auto; font-size: 0.55rem; padding: 4px 8px; }
+      .type-meta { flex-direction: column; gap: 20px; }
+    }
+    @media (max-width: 520px) { .values-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div id="progress"></div>
+
+  <!-- ════════════ NAV ════════════ -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo-w.svg" alt="" class="nav-icon">
+      <img src="text-logo.svg" alt="AKOOK Jewelries" class="nav-text-logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#intro">الهوية</a></li>
+      <li><a href="#vision">الرؤية</a></li>
+      <li><a href="#values">القيم</a></li>
+      <li><a href="#palette">البصريات</a></li>
+      <li><a href="#experience">التجربة</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-vignette"></div>
+    <div id="heroParticles"></div>
+    <div class="hero-content" id="heroContent">
+      <div class="hero-icon-wrap">
+        <img class="hero-icon" src="logo-w.svg" alt="AKOOK">
+      </div>
+      <img class="hero-text-logo" src="text-logo.svg" alt="AKOOK Jewelries">
+      <div class="hero-rule"></div>
+      <p class="hero-byline">من خديجة الذبواني</p>
+    </div>
+    <div class="scroll-hint">
+      <span>للأسفل</span>
+      <div class="scroll-wire"></div>
+    </div>
+  </section>
+
+  <!-- ════════════ INTRO ════════════ -->
+  <section class="intro" id="intro">
+    <div class="section-wrap">
+      <div class="intro-grid">
+        <div class="reveal-right">
+          <p class="s-label">هوية العلامة</p>
+          <h2 class="s-title">هوية <em style="font-style:italic;">إبداعية</em></h2>
+          <p class="s-body">مجوهرات أكوك ليست مجرد علامة تجارية للمجوهرات — بل هي هوية إبداعية تشكّلت من الشغف بالتصميم والثقافة والسرد العاطفي. تفخر هذه العلامة بجذورها العُمانية وتعكس الإرث الأصيل والحرفية المحلية، في حين تطمح إلى الاعتراف العالمي.</p>
+          <p class="s-body">وُجدت هذه العلامة لتحويل المجوهرات من زينة إلى تعبير — قطع تعكس الفردية والذكرى والمعنى. كل عمل بمثابة رواية تُصاغ بعناية عبر المفهوم والجماليات والحرفية.</p>
+        </div>
+        <div class="reveal-left" style="position:relative;">
+          <div class="year-badge">تأسست عام ٢٠٢٠ &mdash; عُمان</div>
+          <p class="s-body" style="margin-bottom:0;">متجذّرة في الاستكشاف الفني والسرد البصري، تتبنى مجوهرات أكوك التوازن بين الرهافة والشخصية، وتقدّم تصاميم تتردد أصداؤها بعيداً عن الموضة والموسم.</p>
+          <blockquote class="intro-statement">
+            «مجوهرات صُمِّمت لا لتُرتدى فحسب، بل لتُعاش.»
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOUNDER ════════════ -->
+  <section class="founder" id="founder">
+    <div class="founder-ghost">خديجة</div>
+    <div class="section-wrap">
+      <div class="founder-grid">
+        <div class="reveal-right">
+          <div class="founder-photo">
+            <img class="founder-photo-icon" src="logo-w.svg" alt="AKOOK">
+          </div>
+        </div>
+        <div class="reveal-left">
+          <p class="s-label">المؤسِّسة</p>
+          <h2 class="founder-name">خديجة<br>الذبواني</h2>
+          <p class="founder-role">المؤسِّسة والمديرة الإبداعية</p>
+          <div class="founder-divider"></div>
+          <p class="s-body">منذ تأسيس مجوهرات أكوك عام ٢٠٢٠، كرّست خديجة نفسها لتصميم قطع فريدة وجميلة تعكس الثقافة والحرفية العُمانية. يشمل دورها العملية الإبداعية من المفهوم حتى التنفيذ، مع الحرص على أن تحمل كل تصميم الرهافة والأصالة.</p>
+          <p class="s-body" style="margin-top:16px;">تقود فريقاً من المواهب، وتشرف على الإنتاج، وتدير استراتيجيات التسويق للارتقاء بالعلامة التجارية. شغفها بتصميم المجوهرات يقود الابتكار وخلق قطع تحتفي بإرث عُمان مع توافق مع الجماليات الحديثة.</p>
+          <p class="s-body" style="margin-top:16px;">علاوة على ريادة الأعمال، تُعدّ خديجة خبيرةً في صناعة التجزئة بسجل حافل في مجال تجزئة العقارات السكنية في سلطنة عُمان — مكتسبةً ثروةً من المعرفة في التخطيط الاستراتيجي وتنفيذ حملات متميزة في مجمعات ماجد الفطيم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ VISION ════════════ -->
+  <section class="vision" id="vision">
+    <div class="vision-bg-layer"></div>
+    <div class="section-wrap vision-inner">
+      <div class="reveal">
+        <p class="s-label">الرؤية</p>
+        <h2 class="s-title" style="max-width:760px;">تأسيس أكوك بوصفها داراً إبداعية متميزة للمجوهرات تجسر الهوة بين الإرث والتصميم المعاصر.</h2>
+        <p class="s-body" style="max-width:640px;">تتصور العلامة مستقبلاً تُقدَّر فيه المجوهرات للسرد والعاطفة والهوية الفنية — لا للجماليات وحدها. والنمو يسيّره الهوية لا الابتكار، حتى لا يطغى التجديد على الأصالة.</p>
+      </div>
+      <div class="vision-grid">
+        <div class="vision-card reveal d1">
+          <p class="vision-card-title">التأثير في السرد المعاصر</p>
+          <p class="vision-card-body">إعادة تشكيل طريقة بناء روايات المجوهرات ونقلها، متجاوزةً الجماليات السطحية إلى معنى أعمق.</p>
+        </div>
+        <div class="vision-card reveal d2">
+          <p class="vision-card-title">تمثيل الإبداع الإقليمي عالمياً</p>
+          <p class="vision-card-body">تقديم الحرفية والثقافة ولغة التصميم العُمانية إلى جمهور عالمي بثقة وفخر.</p>
+        </div>
+        <div class="vision-card reveal d3">
+          <p class="vision-card-title">بناء بصمة فنية راسخة</p>
+          <p class="vision-card-body">تطوير لغة بصرية وعاطفية تُعرَف على الفور بأنها أكوك — فريدة وهادفة ولا تُنسى.</p>
+        </div>
+        <div class="vision-card reveal d4">
+          <p class="vision-card-title">توسيع التعاونات الثقافية</p>
+          <p class="vision-card-body">الشراكة مع الفنانين والحرفيين والمؤسسات الإبداعية لإثراء عالم العلامة وتعزيز أثرها.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ MISSION ════════════ -->
+  <section class="mission" id="mission">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">المهمة</p>
+        <h2 class="s-title">تعهداتنا</h2>
+      </div>
+      <div class="mission-list">
+        <div class="mission-item reveal d1">
+          <span class="mission-num">01</span>
+          <div>
+            <p class="mission-text-title">تصميم متجذّر في المعنى</p>
+            <p class="mission-text-body">كل قطعة تبدأ بقصة. الإلهام والنية والمشاعر تسبق أي قرار جمالي.</p>
+          </div>
+          <span class="mission-arrow">←</span>
+        </div>
+        <div class="mission-item reveal d2">
+          <span class="mission-num">02</span>
+          <div>
+            <p class="mission-text-title">التميز في الحرفية</p>
+            <p class="mission-text-body">الدقة والجودة والتفاصيل لا تُساوَم عليها أبداً. كل عمل يُقاس بأعلى معايير التنفيذ الفني.</p>
+          </div>
+          <span class="mission-arrow">←</span>
+        </div>
+        <div class="mission-item reveal d3">
+          <span class="mission-num">03</span>
+          <div>
+            <p class="mission-text-title">الحساسية الثقافية والجماليات الحديثة</p>
+            <p class="mission-text-body">الإرث هو الأساس؛ والذوق المعاصر هو الاتجاه. كلاهما حاضران في كل تصميم من تصاميم أكوك.</p>
+          </div>
+          <span class="mission-arrow">←</span>
+        </div>
+        <div class="mission-item reveal d4">
+          <span class="mission-num">04</span>
+          <div>
+            <p class="mission-text-title">القيمة العاطفية للعملاء</p>
+            <p class="mission-text-body">مجوهرات تُحسّ وتُذكر وتُعتزّ بها — تربط الناس بالأوقات والذكريات والهوية.</p>
+          </div>
+          <span class="mission-arrow">←</span>
+        </div>
+        <div class="mission-item reveal d5">
+          <span class="mission-num">05</span>
+          <div>
+            <p class="mission-text-title">تجربة علامة استثنائية</p>
+            <p class="mission-text-body">من أول نقطة تواصل حتى فتح العلبة الأخير — كل تفاعل مرفّع وهادف وغامر.</p>
+          </div>
+          <span class="mission-arrow">←</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CORE VALUES ════════════ -->
+  <section class="values" id="values">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">القيم الجوهرية</p>
+        <h2 class="s-title">ما نؤمن به</h2>
+      </div>
+      <div class="values-grid">
+        <div class="val-card reveal d1">
+          <p class="val-n">01</p>
+          <h3 class="val-title">الأصالة</h3>
+          <p class="val-desc">الإلهام الحقيقي يوجّه كل قرار تصميمي. لا شيء مصطنع — كل قطعة تعكس قناعة إبداعية صادقة.</p>
+        </div>
+        <div class="val-card reveal d2">
+          <p class="val-n">02</p>
+          <h3 class="val-title">الإبداع</h3>
+          <p class="val-desc">الابتكار والخيال يشكّلان تطور العلامة. نتجاوز الحدود مع الاحتفاء بالجذور التي تُثبّتنا في الأرض.</p>
+        </div>
+        <div class="val-card reveal d3">
+          <p class="val-n">03</p>
+          <h3 class="val-title">الحرفية</h3>
+          <p class="val-desc">الدقة والجودة لا يُتنازل عنهما. الأيدي التي تصنع كل قطعة تحمل ثقل التراث الفني.</p>
+        </div>
+        <div class="val-card reveal d4">
+          <p class="val-n">04</p>
+          <h3 class="val-title">التقدير الثقافي</h3>
+          <p class="val-desc">الإرث يُلهم باحترام وتأمل. الهوية العُمانية مصدر فخر وبوصلة إبداعية.</p>
+        </div>
+        <div class="val-card reveal d5">
+          <p class="val-n">05</p>
+          <h3 class="val-title">الارتباط</h3>
+          <p class="val-desc">المجوهرات تُخلق لتُنشئ ارتباطاً عاطفياً — تربط الناس بقصصهم وأحبائهم وذكرياتهم.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ DESIGN PHILOSOPHY ════════════ -->
+  <section class="philosophy" id="philosophy">
+    <div class="philo-bg-text">فلسفة</div>
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">فلسفة التصميم</p>
+        <h2 class="s-title">المبادئ الثلاثة الموجِّهة</h2>
+      </div>
+      <div class="philo-grid">
+        <div class="philo-item reveal d1">
+          <p class="philo-num">المبدأ الأول</p>
+          <h3 class="philo-title">المفهوم قبل الزخرفة</h3>
+          <p class="philo-body">كل تصميم يبدأ بمفهوم محدد بوضوح. الزخرفة تتبع المعنى — لا العكس. الفكرة هي البنية؛ والجمال هو تعبيرها.</p>
+        </div>
+        <div class="philo-item reveal d2">
+          <p class="philo-num">المبدأ الثاني</p>
+          <h3 class="philo-title">العاطفة كامنة في التفاصيل</h3>
+          <p class="philo-body">أصغر القرارات تحمل أكبر الأوزان. انحناءة، ملمس، نسبة — كل تفصيل عمل إرادي من الارتباط العاطفي.</p>
+        </div>
+        <div class="philo-item reveal d3">
+          <p class="philo-num">المبدأ الثالث</p>
+          <h3 class="philo-title">التوازن بين التراث والحداثة</h3>
+          <p class="philo-body">الإلهام يتدفق من الطبيعة والرمزية والعمارة والعناصر الثقافية — في أشكال عصرية تحافظ على الأناقة والقابلية للارتداء.</p>
+        </div>
+      </div>
+      <div class="philo-quote reveal">
+        <p class="philo-quote-text">«مجوهرات صُمِّمت لا لتُرتدى فحسب، بل لتُعاش — تُحسّ وتُذكر وتنتقل من جيل إلى جيل.»</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ COLOR PALETTE ════════════ -->
+  <section class="palette" id="palette">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">ألوان العلامة</p>
+        <h2 class="s-title">لوحة الألوان</h2>
+        <p class="s-body" style="max-width:520px;">ثلاثة ألوان أساسية تشكّل الأساس البصري لمجوهرات أكوك — كل منها اختير لنقل العمق والفخامة والإرث الطبيعي.</p>
+      </div>
+      <div class="palette-grid">
+        <div class="swatch sw-black reveal d1">
+          <div class="swatch-inner"></div>
+          <div class="swatch-info">
+            <p class="swatch-hex">#000000</p>
+            <p class="swatch-name">أُبسيديان</p>
+            <p class="swatch-vals">C. 0 &nbsp; M. 0 &nbsp; Y. 0 &nbsp; K. 100<br>R. 0 &nbsp; G. 0 &nbsp; B. 0</p>
+          </div>
+        </div>
+        <div class="swatch sw-charcoal reveal d2">
+          <div class="swatch-inner"></div>
+          <span class="swatch-tag">اللون الرئيسي</span>
+          <div class="swatch-info">
+            <p class="swatch-hex">#363330</p>
+            <p class="swatch-name">الفحمي</p>
+            <p class="swatch-vals">C. 67 &nbsp; M. 62 &nbsp; Y. 65 &nbsp; K. 59<br>R. 54 &nbsp; G. 51 &nbsp; B. 48</p>
+          </div>
+        </div>
+        <div class="swatch sw-forest reveal d3">
+          <div class="swatch-inner"></div>
+          <div class="swatch-info">
+            <p class="swatch-hex">#00371F</p>
+            <p class="swatch-name">الغابة</p>
+            <p class="swatch-vals">C. 88 &nbsp; M. 47 &nbsp; Y. 88 &nbsp; K. 63<br>R. 0 &nbsp; G. 55 &nbsp; B. 31</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TYPOGRAPHY ════════════ -->
+  <section class="typography" id="typography">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">الطباعة</p>
+        <h2 class="s-title">أنماط خطوط العلامة</h2>
+      </div>
+      <div class="type-specimen">
+        <div class="type-block reveal">
+          <div class="type-meta">
+            <div class="type-meta-item">
+              <span class="type-meta-label">الخط الأساسي</span>
+              <span class="type-meta-value">BUDA</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">التصنيف</span>
+              <span class="type-meta-value">Serif — Display</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">الاستخدام</span>
+              <span class="type-meta-value">الشعار والعناوين والعرض</span>
+            </div>
+          </div>
+          <p class="type-display-en">AKOOK<br>Jewelries</p>
+          <p class="type-alphabet">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+          <p class="type-alphabet" style="margin-top:4px;">a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+          <p class="type-alphabet" style="margin-top:4px;">0 1 2 3 4 5 6 7 8 9</p>
+        </div>
+        <div class="type-block reveal" style="margin-top:48px;">
+          <div class="type-meta">
+            <div class="type-meta-item">
+              <span class="type-meta-label">الخط العربي</span>
+              <span class="type-meta-value">TAJM3 KUFI</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">التصنيف</span>
+              <span class="type-meta-value">كوفي — عربي</span>
+            </div>
+            <div class="type-meta-item">
+              <span class="type-meta-label">الاستخدام</span>
+              <span class="type-meta-value">الشعار العربي والمحتوى RTL</span>
+            </div>
+          </div>
+          <p class="type-display-ar">مُـجـوهـرات أكـــوك</p>
+          <p class="type-alphabet" style="text-align:right;">
+            أ &nbsp;ب &nbsp;ت &nbsp;ث &nbsp;ج &nbsp;ح &nbsp;خ &nbsp;د &nbsp;ذ &nbsp;ر &nbsp;ز &nbsp;س &nbsp;ش &nbsp;ص &nbsp;ض &nbsp;ط &nbsp;ظ &nbsp;ع &nbsp;غ &nbsp;ف &nbsp;ق &nbsp;ك &nbsp;ل &nbsp;م &nbsp;ن &nbsp;ه &nbsp;و &nbsp;ي
+          </p>
+          <p class="type-alphabet" style="text-align:right; margin-top:4px;">
+            ٠ &nbsp;١ &nbsp;٢ &nbsp;٣ &nbsp;٤ &nbsp;٥ &nbsp;٦ &nbsp;٧ &nbsp;٨ &nbsp;٩
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ LOGO GUIDELINES ════════════ -->
+  <section class="logo-guide" id="logo">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">دليل الشعار</p>
+        <h2 class="s-title">استخدامات الشعار</h2>
+        <p class="s-body" style="max-width:580px;">يجب أن يظهر شعار أكوك دائماً بالأشكال المعتمدة. يجب أن تحافظ الأيقونة والشعار الكتابي والتركيب الفرعي دائماً على النسب التصميمية المحددة لها.</p>
+      </div>
+      <div class="logo-grid reveal" style="margin-top:64px;">
+        <div class="logo-cell logo-on-black">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">على الأسود</p>
+        </div>
+        <div class="logo-cell logo-on-green">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">على الأخضر الغابي</p>
+        </div>
+        <div class="logo-cell logo-on-dark">
+          <img src="logo-w.svg" class="logo-icon-cell" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label" style="color:rgba(255,255,255,.3);">على الفحمي</p>
+        </div>
+        <div class="logo-cell logo-on-cream">
+          <img src="logo-w.svg" class="logo-icon-cell" style="filter:invert(1);" alt="">
+          <img src="text-logo.svg" class="logo-text-lockup" alt="AKOOK Jewelries">
+          <p class="logo-cell-label">على الفاتح</p>
+        </div>
+      </div>
+      <div class="donts reveal" style="margin-top:80px;">
+        <h3 class="donts-title">الاستخدامات الخاطئة للشعار</h3>
+        <div class="donts-grid">
+          <div class="dont-card">
+            <p class="dont-flag">النسب</p>
+            <p class="dont-text">لا تغيّر حجم أو نسب عناصر الشعار. يجب أن تحافظ الأيقونة والشعار الكتابي دائماً على النسبة التصميمية.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">التدوير</p>
+            <p class="dont-text">لا تُميل الشعار. يجب أن يظهر الشعار الكتابي دائماً مستقيماً ومحاذياً، ولا يُمال أو يُدار أبداً.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">تغيير اللون</p>
+            <p class="dont-text">لا تغيّر قيم الألوان. لا ينبغي تفتيحها أو تغميقها أو استبدالها بألوان غير معتمدة من اللوحة.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">الخلفيات المزدحمة</p>
+            <p class="dont-text">لا تضع الشعار على خلفيات معقدة أو منقوشة أو فوتوغرافية تضر بوضوح العلامة أو قراءتها.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">التأثيرات</p>
+            <p class="dont-text">لا تضف ظلاً أو توهجاً أو تدرجاً أو أي تأثير ثلاثي الأبعاد لأي عنصر من عناصر نظام الشعار.</p>
+          </div>
+          <div class="dont-card">
+            <p class="dont-flag">النسخة الخطية</p>
+            <p class="dont-text">لا تستخدم الشعار بنسخة خطية. يجب أن يظهر الشعار الكتابي دائماً بالوزن الصلب المعتمد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ BRAND EXPERIENCE ════════════ -->
+  <section class="experience" id="experience">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">تجربة العلامة</p>
+        <h2 class="s-title">كل نقطة تواصل مهمة</h2>
+        <p class="s-body" style="max-width:600px;">هوية مجوهرات أكوك تتجاوز تصميم المنتج. كل تفاعل مصمَّم بقصد — يحوّل الملكية إلى تجربة وذكرى.</p>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-item reveal d1">
+          <span class="exp-num">01</span>
+          <div>
+            <p class="exp-title">التصوير التحريري</p>
+            <p class="exp-desc">جميع صور المنتج تتبع جماليات تحريرية — تركيبات مدروسة وإضاءة مصفّاة وسرد فضائي يرفع كل قطعة.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d2">
+          <span class="exp-num">02</span>
+          <div>
+            <p class="exp-title">التغليف الفاخر</p>
+            <p class="exp-desc">التغليف امتداد للمجوهرة ذاتها. الأخضر الغابي والرقائق الذهبية وأيقونة العلامة تخلق تجربة فتح علبة تبدو كل مرة كهدية.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d3">
+          <span class="exp-num">03</span>
+          <div>
+            <p class="exp-title">السرد البصري</p>
+            <p class="exp-desc">كل مجموعة تُقدَّم بوصفها روايةً بصرية — بلوحات مزاجية وصور حملات وتوجيه إبداعي يتواصل فوق المنتج.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d4">
+          <span class="exp-num">04</span>
+          <div>
+            <p class="exp-title">التعاونات الفنية</p>
+            <p class="exp-desc">الشراكة مع الفنانين والمصورين والمبدعين الثقافيين توسّع عالم العلامة وتعزز هويتها منصةً للفن.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d5">
+          <span class="exp-num">05</span>
+          <div>
+            <p class="exp-title">اتصالات العلامة</p>
+            <p class="exp-desc">كل تعليق ورسالة وتفاعل مع العميل يحمل صوت العلامة — متأمّل ومصقول وعميق الهدف.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal d5" style="transition-delay:.45s;">
+          <span class="exp-num">06</span>
+          <div>
+            <p class="exp-title">الفضاء والتجزئة</p>
+            <p class="exp-desc">المتجر في مول عُمان مسقط مُصمَّم بوصفه بيئةً غامرة — حيث تتوحد العمارة والمواد والعرض تحت هوية أكوك.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FUTURE DIRECTION ════════════ -->
+  <section class="future" id="future">
+    <div class="section-wrap">
+      <div class="reveal">
+        <p class="s-label">التوجه المستقبلي</p>
+        <h2 class="s-title">نظرة إلى الأمام</h2>
+        <p class="s-body" style="max-width:560px;">مجوهرات أكوك تتطور بالطموح الإبداعي والنمو الاستراتيجي. النمو يسيّره الهوية لا الابتكار، حتى لا تطغى الحداثة على الأصالة.</p>
+      </div>
+      <div class="future-list">
+        <div class="fut-item reveal d1">
+          <span class="fut-title">إطلاق مجموعات قائمة على المفهوم</span>
+          <span class="fut-arrow">←</span>
+        </div>
+        <div class="fut-item reveal d2">
+          <span class="fut-title">المشاركة في المعارض الإقليمية والعالمية</span>
+          <span class="fut-arrow">←</span>
+        </div>
+        <div class="fut-item reveal d3">
+          <span class="fut-title">تطوير قطع توقيعية أيقونية</span>
+          <span class="fut-arrow">←</span>
+        </div>
+        <div class="fut-item reveal d4">
+          <span class="fut-title">توسيع الحضور الرقمي والسرد الإبداعي</span>
+          <span class="fut-arrow">←</span>
+        </div>
+        <div class="fut-item reveal d5">
+          <span class="fut-title">تعزيز التعاونات الفنية</span>
+          <span class="fut-arrow">←</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CLOSING ════════════ -->
+  <section class="closing">
+    <div class="closing-bg"></div>
+    <div class="closing-ghost">أكوك</div>
+    <div class="closing-inner reveal">
+      <img class="closing-logo" src="logo-w.svg" alt="AKOOK">
+      <div class="closing-rule"></div>
+      <blockquote class="closing-quote">
+        «تمثّل مجوهرات أكوك ما هو أعمق من الحرفية — هوية وتعبير وسرد. كل قطعة صُمِّمت لتجسّد المشاعر وتُخلّد الذكريات، عاكسةً اللحظات والإرث والفردية.»
+      </blockquote>
+      <div class="closing-rule"></div>
+      <img class="closing-text-logo" src="text-logo.svg" alt="AKOOK Jewelries">
+      <p class="closing-year">إعادة بناء هوية العلامة &nbsp;|&nbsp; الشعار والتصميم &nbsp;|&nbsp; ٢٠٢٣</p>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-logo-wrap">
+          <img src="logo-w.svg" alt="" class="footer-icon">
+          <img src="text-logo.svg" alt="AKOOK Jewelries" class="footer-text-logo">
+        </div>
+        <span class="footer-tagline">من خديجة الذبواني</span>
+      </div>
+      <div class="footer-right">
+        <div class="footer-contact">
+          <span>@akookjewelries</span><br>
+          <span dir="ltr">+968 71685555</span><br>
+          <span>مول عُمان، مسقط</span>
+        </div>
+        <p class="footer-credit">دليل الهوية ٢٠٢٣ &nbsp;—&nbsp; تصميم بواسطة White Studio، روان عصام</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ─── CUSTOM CURSOR ─── */
+    const cursorDot  = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursorRing');
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top  = mouseY + 'px';
+    });
+    (function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top  = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+    document.querySelectorAll('a, .swatch, .vision-card, .val-card, .fut-item, .mission-item').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursorRing.style.width = '54px'; cursorRing.style.height = '54px'; cursorRing.style.borderColor = 'rgba(201,164,98,0.7)'; });
+      el.addEventListener('mouseleave', () => { cursorRing.style.width = '32px'; cursorRing.style.height = '32px'; cursorRing.style.borderColor = 'rgba(201,164,98,0.45)'; });
+    });
+
+    /* ─── HERO PARTICLES ─── */
+    (function createParticles() {
+      const container = document.getElementById('heroParticles');
+      if (!container) return;
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'hero-particle';
+        const size = 1 + Math.random() * 2.2;
+        p.style.cssText = `left:${4+Math.random()*92}%;top:${8+Math.random()*82}%;width:${size}px;height:${size}px;animation-delay:${Math.random()*9}s;animation-duration:${5+Math.random()*9}s;opacity:${0.25+Math.random()*0.55};`;
+        container.appendChild(p);
+      }
+    })();
+
+    /* ─── PROGRESS BAR ─── */
+    const progress = document.getElementById('progress');
+    function updateProgress() {
+      const s = window.scrollY, d = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = (s / d * 100) + '%';
+    }
+
+    /* ─── NAV ─── */
+    const nav = document.getElementById('nav');
+    function updateNav() { nav.classList.toggle('scrolled', window.scrollY > 60); }
+
+    /* ─── HERO PARALLAX ─── */
+    const heroContent = document.getElementById('heroContent');
+    function updateHeroParallax() {
+      if (!heroContent) return;
+      const y = window.scrollY;
+      heroContent.style.transform = `translateY(${y * 0.38}px)`;
+      heroContent.style.opacity = 1 - (y / window.innerHeight) * 1.4;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ─── SCROLL HANDLER ─── */
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { updateProgress(); updateNav(); updateHeroParallax(); ticking = false; });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    /* ─── SMOOTH ANCHOR ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
